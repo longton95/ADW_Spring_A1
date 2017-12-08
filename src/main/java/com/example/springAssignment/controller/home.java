@@ -10,19 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RestController
+@Controller
 public class home {
     @Autowired
     private AddressService addressService;
 
     private static final String HOME = "home";
 
-//    @GetMapping (value = "/")
-//    public String displayHome () {
-//
-//        return HOME;
-//
-//    }
+    @GetMapping (value = "/")
+    public String displayHome () {
+
+        return HOME;
+
+    }
+
     @GetMapping ("/address")
     public List<Address> getAllAddresses () {
         return addressService.findAllEntries ();

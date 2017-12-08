@@ -6,14 +6,11 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
 
-@Entity
-@Table(name = "Addresses")
+
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "entry_id")
-    private Integer id;
+    private String id;
 
     @NotEmpty
     public String firstName;
@@ -30,6 +27,15 @@ public class Address {
     @NotEmpty
     private String postCode;
 
+    public Address() {}
+
+    public Address(String firstName, String lastName,String houseNumber, String postCode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.houseNumber = houseNumber;
+        this.postCode = postCode;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -44,6 +50,13 @@ public class Address {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+                "Customer[id=%s, firstName='%s', lastName='%s']",
+                id, firstName, lastName);
     }
 
 }
