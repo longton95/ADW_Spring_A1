@@ -24,7 +24,9 @@ public class SpringAssignmentApplication implements CommandLineRunner {
 
 		repository.deleteAll();
 
-		repository.save(new Address("John", "Doe", "24", "hd1"));
+		repository.save(new Address("Josh", "Longton", "24", "HD3 4YW"));
+		repository.save(new Address("Samir", "Mohammed", "12", "HD3 2YB"));
+		repository.save(new Address("John", "Doe", "1", "AA1 2BB"));
 
 		System.out.println("Address's found with findAll():");
 		System.out.println("-------------------------------");
