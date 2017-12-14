@@ -11,11 +11,13 @@ import java.util.List;
 
 
 @Controller
-public class home {
+public class Index {
     @Autowired
     private AddressService addressService;
 
     private static final String HOME = "home";
+
+
 
     @GetMapping (value = "/")
     public String displayHome () {

@@ -55,9 +55,8 @@ public class Address {
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%s, firstName='%s', lastName='%s']",
+                "Address[id=%s, firstName='%s', lastName='%s']",
                 id, firstName, lastName);
     }
 
 }
-
