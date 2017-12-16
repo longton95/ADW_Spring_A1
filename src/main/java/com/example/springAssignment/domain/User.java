@@ -7,7 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 
-public class Address {
+public class User {
 
     @Id
     private String id;
@@ -19,21 +19,23 @@ public class Address {
     public String lastName;
 
     @NotEmpty
-    private String email;
+    public String email;
 
-    @NotEmpty
-    private String houseNumber;
+    public Integer bitcoin;
 
-    @NotEmpty
-    private String postCode;
+    public Integer etherium;
 
-    public Address() {}
+    public Integer litecoin;
 
-    public Address(String firstName, String lastName,String houseNumber, String postCode) {
+    public User() {
+    }
+
+    public User(String firstName, String lastName, Integer bitcoin, Integer etherium, Integer litecoin) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.houseNumber = houseNumber;
-        this.postCode = postCode;
+        this.bitcoin = bitcoin;
+        this.etherium = etherium;
+        this.litecoin = litecoin;
     }
 
     public String getFirstName() {
@@ -55,8 +57,8 @@ public class Address {
     @Override
     public String toString() {
         return String.format(
-                "Address[id=%s, firstName='%s', lastName='%s']",
-                id, firstName, lastName);
+                "User[id=%s, firstName='%s', lastName='%s', bitcoin='%s', etherium='%s', litecoin='%s']",
+                id, firstName, lastName, bitcoin, etherium, litecoin);
     }
 
 }

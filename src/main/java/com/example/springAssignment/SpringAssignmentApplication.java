@@ -1,7 +1,7 @@
 package com.example.springAssignment;
 
-import com.example.springAssignment.domain.Address;
-import com.example.springAssignment.domain.AddressRepository;
+import com.example.springAssignment.domain.User;
+import com.example.springAssignment.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,22 +18,33 @@ public class SpringAssignmentApplication implements CommandLineRunner {
 	}
 
 	@Autowired
-	private AddressRepository repository;
+	private UserRepository repository;
 
 	public void run(String... args) throws Exception {
 
 		repository.deleteAll();
 
-		repository.save(new Address("Josh", "Longton", "24", "HD3 4YW"));
-		repository.save(new Address("Samir", "Mohammed", "12", "HD3 2YB"));
-		repository.save(new Address("John", "Doe", "1", "AA1 2BB"));
+		repository.save(new User("Josh", "Longton", 1, 2, 3));
+		repository.save(new User("Samir", "Mohammed", 1, 2, 3));
+		repository.save(new User("John", "Doe",  1, 2, 3));
 
-		System.out.println("Address's found with findAll():");
+		System.out.println("User's found with findAll():");
 		System.out.println("-------------------------------");
-		for (Address address : repository.findAll()) {
-			System.out.println(address);
+		for (User user : repository.findAll()) {
+			System.out.println(user);
 		}
 		System.out.println();
+
+		System.out.println("User found with findByFirstName('John'):");
+		System.out.println("--------------------------------");
+		System.out.println(repository.findByFirstName("John"));
+		System.out.println();
+
+		System.out.println("User found with findByLastName('Longton'):");
+		System.out.println("--------------------------------");
+		for (User user : repository.findByLastName("Longton")) {
+			System.out.println(user);
+		}
 
 
 	}

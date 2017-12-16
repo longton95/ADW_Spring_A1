@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+<div th:replace="mixins/nav"></div>
+<div class="container">
+    <div th:if="${entries.isEmpty()}">
+        <p>There are no Addresses</p>
+    </div>
+
+    <div th:if="${!entries.isEmpty()}">
+        <p>Coins</p>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Bitcoin</th>
+                <th>Etherium</th>
+                <th>Litecoin</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="entry: ${entries}">
+                <td th:text="${entry.firstName}"></td>
+                <td th:text="${entry.lastName}"></td>
+                <td th:text="${entry.bitcoin}"></td>
+                <td th:text="${entry.etherium}"></td>
+                <td th:text="${entry.litecoin}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div th:replace="mixins/footer"></div>
+<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
