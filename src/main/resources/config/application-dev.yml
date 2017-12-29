@@ -1,0 +1,12 @@
+server:
+    port: 8080
+
+spring:
+    profiles:
+        active: dev
+    data:
+        mongodb:
+            uri: mongodb://localhost/springAssignment
+            database: springAssignment
+            host: localhost
+            port: 27017
