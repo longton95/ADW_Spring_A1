@@ -17,23 +17,26 @@ public class Index {
     private UserService userService;
 
     private static final String HOME = "index";
-    private static final String FORM_ENTRIES_ID = "entries";
 
 
 
     @GetMapping (value = "/")
     public String displayHome (Model model) {
 
-        model.addAttribute (FORM_ENTRIES_ID, this.userService.findAllEntries ());
+        model.addAttribute ("entries", this.userService.findAllEntries ());
 
         return HOME;
 
     }
 
-    @GetMapping ("/address")
-    public List<User> getAllAddresses () {
-        return userService.findAllEntries ();
-    }
+//    @GetMapping (value = "/")
+//    public String setUser (Model model) {
+//
+//        model.addAttribute ("entries", this.userService.findAllEntries ());
+//
+//        return HOME;
+//
+//    }
 
 
 }

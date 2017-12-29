@@ -1,12 +1,12 @@
 package com.example.springAssignment.domain;
 
 import org.springframework.data.annotation.Id;
-
-import javax.persistence.*;
-
 import javax.validation.constraints.NotEmpty;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
+    @Document(collection = "users")
 public class User {
 
     @Id
@@ -19,6 +19,7 @@ public class User {
     public String lastName;
 
     @NotEmpty
+    @Indexed(unique = true)
     public String email;
 
     public Integer bitcoin;
@@ -30,9 +31,10 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, Integer bitcoin, Integer etherium, Integer litecoin) {
+    public User(String firstName, String lastName,String email,  Integer bitcoin, Integer etherium, Integer litecoin) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.bitcoin = bitcoin;
         this.etherium = etherium;
         this.litecoin = litecoin;
@@ -57,8 +59,8 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "User[id=%s, firstName='%s', lastName='%s', bitcoin='%s', etherium='%s', litecoin='%s']",
-                id, firstName, lastName, bitcoin, etherium, litecoin);
+                "User[id=%s, firstName='%s', lastName='%s', email='%s', bitcoin='%s', etherium='%s', litecoin='%s']",
+                id, firstName, lastName, email, bitcoin, etherium, litecoin);
     }
 
 }

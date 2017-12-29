@@ -11,10 +11,10 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository repository;
 
     public List<User> findAllEntries () {
-        List <User> entries = this.userRepository.findAll ();
+        List <User> entries = this.repository.findAll ();
 
         return entries;
 
