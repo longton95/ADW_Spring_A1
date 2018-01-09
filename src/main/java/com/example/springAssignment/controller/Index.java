@@ -29,14 +29,5 @@ public class Index {
 
     }
 
-//    @GetMapping (value = "/")
-//    public String setUser (Model model) {
-//
-//        model.addAttribute ("entries", this.userService.findAllEntries ());
-//
-//        return HOME;
-//
-//    }
-
 
 }
