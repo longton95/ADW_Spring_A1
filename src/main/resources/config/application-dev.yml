@@ -10,3 +10,7 @@ spring:
             database: springAssignment
             host: localhost
             port: 27017
+
+logging:
+    level:
+        org.springframework: debug

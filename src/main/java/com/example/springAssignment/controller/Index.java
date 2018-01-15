@@ -18,6 +18,16 @@ public class Index {
 
     private static final String HOME = "index";
 
+//    @Override
+//    protected void configure(final HttpSecurity http) throws Exception {
+//        http
+//                .formLogin()
+//                .loginPage("/login.html")
+//                .failureUrl("/login-error.html")
+//                .and()
+//                .logout()
+//                .logoutSuccessUrl("/index.html");
+//    }
 
 
     @GetMapping (value = "/")
