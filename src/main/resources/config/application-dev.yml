@@ -13,4 +13,11 @@ spring:
 
 logging:
     level:
+        root: WARN
         org.springframework: debug
+        org.springframework.web: debug
+        org.springframework.security: debug
+
+spring:
+  thymeleaf:
+    cache: false
