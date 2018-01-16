@@ -11,7 +11,7 @@ public class Admin {
     @Autowired
     private UserService userService;
 
-    private static final String ADMIN = "admin";
+    private static final String ADMIN = "admin/admin";
 
 
 
