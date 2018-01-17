@@ -1,12 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Home</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container">
@@ -16,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">My project</a>
+            <a class="navbar-brand" href="/">My project</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -24,21 +17,21 @@
                     <a href="#" th:href="@{/}">Home</a>
                 </li>
                 <li th:classappend="${module == 'tasks' ? 'active' : ''}">
-                    <a href="#" th:href="@{/add}">Add</a>
+                    <a href="#" th:href="@{/profile/add}">Add</a>
                 </li>
                 <li th:classappend="${module == 'tasks-ld' ? 'active' : ''}">
                     <a href="#" th:href="@{/admin}">Admin</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:if="${#authorization.expression('!isAuthenticated()')}">
-                    <a href="/signin" th:href="@{/signin}">
+                <li th:fragment="login" class="logout" sec:authorize="!isAuthenticated()">
+                    <a href="/signin" th:href="@{/login}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
                     </a>
                 </li>
-                <li th:if="${#authorization.expression('isAuthenticated()')}">
+                <li th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
                     <a href="/logout" th:href="@{#}" onclick="$('#form').submit();">
-                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout <span sec:authentication="name"></span>
                     </a>
                     <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
                 </li>
