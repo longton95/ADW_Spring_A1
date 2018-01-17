@@ -22,6 +22,8 @@ public class User {
     @Indexed(unique = true)
     public String email;
 
+    public String role;
+
     public Integer bitcoin;
 
     public Integer etherium;
