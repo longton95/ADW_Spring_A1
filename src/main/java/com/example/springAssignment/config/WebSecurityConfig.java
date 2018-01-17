@@ -16,10 +16,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/css/**", "/index").permitAll()
-                .antMatchers("/user/**").hasRole("USER")
-                .and()
-                .formLogin().loginPage("/login").failureUrl("/login-error");
+                    .antMatchers("/", "/login", "/css/**", "/webjars/**").permitAll()
+                    .antMatchers("/profile/**").access("hasRole('USER') or hasRole('ADMIN')")
+                    .antMatchers("/admin").hasRole("ADMIN")
+                    .antMatchers("/user").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+
+                    .and()
+
+                .formLogin()
+                    .loginPage("/login")
+                    .failureUrl("/login-error")
+
+                    .and()
+
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/index")
+                    .invalidateHttpSession(true)
+
+                    .and()
+
+                .exceptionHandling()
+                    .accessDeniedPage("/403")
+
+                    .and()
+
+                .csrf();
     }
     // @formatter:on
 
@@ -28,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("USER"));
+                .withUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("ADMIN"));
     }
     // @formatter:on
 }
