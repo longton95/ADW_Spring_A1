@@ -10,40 +10,8 @@
 <body>
 <div th:replace="mixins/header"></div>
 <div class="container">
-    <div th:if="${entries}">
-        <p>Coins</p>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Role</th>
-                <th>Email</th>
-                <th>Bitcoin</th>
-                <th>Etherium</th>
-                <th>Litecoin</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="entry: ${entries}">
-                <td th:text="${entry.id}"></td>
-                <td th:text="${entry.firstName}"></td>
-                <td th:text="${entry.lastName}"></td>
-                <td th:text="${entry.role}"></td>
-                <td th:text="${entry.email}"></td>
-                <td th:text="${entry.bitcoin}"></td>
-                <td th:text="${entry.etherium}"></td>
-                <td th:text="${entry.litecoin}"></td>
-                <td><a th:href="@{'admin/delete/' + ${entry.id}}">Delete</a></td>
-                <td><a th:href="@{'admin/edit/' + ${entry.id}}">Edit</a></td>
-
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <form action="#" th:action="@{/}" th:object="${newData}" method="post">
+    <form action="/" th:action="@{/}" th:object="${userData}" method="post">
+        <input type="hidden" th:field="*{id}">
         First Name:<br>
         <input type="text" th:field="*{firstName}">
         <br>

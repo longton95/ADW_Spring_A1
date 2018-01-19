@@ -1,15 +1,40 @@
 package com.example.springAssignment.domain;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
-@RepositoryRestResource(collectionResourceRel = "user", path = "user")
-public interface UserRepository extends MongoRepository<User, Integer> {
+public interface UserRepository extends MongoRepository<User, String> {
 
-    public User findByFirstName(String firstName);
-    public List<User> findByLastName(String lastName);
+
+    List <User> findAll ();
+
+    Long deleteUserById(String id);
+
+    User findUserByEmail(String email);
+
+    User findUserById(String id);
+
+
+    //    User findOne(String email);
+
+
+//    List<User> findAll(Predicate predicate, OrderSpecifier<?>... orders);
+//
+//    Page<User> findAll(Predicate predicate, Pageable pageable);
+//
+//    Long count(Predicate predicate);
+
+//    public User findByEmail(String email);
+//
+//    public List<User> findByLastName(String lastName);
+//
+//    void delete(String email);
+//
+//    User findOne(String email);
 
 
 }
