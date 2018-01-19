@@ -13,10 +13,10 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li th:classappend="${module == 'home' ? 'active' : ''}">
+                <li th:classappend="${module == 'index' ? 'active' : ''}">
                     <a href="#" th:href="@{/}">Home</a>
                 </li>
-                <li th:classappend="${module == 'tasks' ? 'active' : ''}">
+                <li th:classappend="${module == 'add' ? 'active' : ''}">
                     <a href="#" th:href="@{/profile/add}">Add</a>
                 </li>
                 <li th:classappend="${module == 'tasks-ld' ? 'active' : ''}">
@@ -25,7 +25,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li th:fragment="login" class="logout" sec:authorize="!isAuthenticated()">
-                    <a href="/signin" th:href="@{/login}">
+                    <a href="/login" th:href="@{/login}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
                     </a>
                 </li>
