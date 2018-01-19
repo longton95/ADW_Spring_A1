@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+<div th:replace="mixins/header"></div>
+<div class="container">
+    <h1>Register page</h1>
+    <div th:if="${registerError}" class="alert alert-danger">
+        <strong>Are You Forgetting Something</strong>
+    </div>
+    <form th:action="@{/login}" method="post">
+        <label for="email">Email</label>:
+        <input type="text" id="email" name="email" autofocus="autofocus" /> <br />
+        <label for="firstName">First name</label>:
+        <input type="text" id="firstName" name="firstName"/> <br />
+        <label for="lastName">Last name</label>:
+        <input type="text" id="lastName" name="lastName"/> <br />
+        <label for="password">Password</label>:
+        <input type="password" id="password" name="password" /> <br />
+        <input type="submit" value="Log in" />
+    </form>
+</div>
+<div th:replace="mixins/footer"></div>
+<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
