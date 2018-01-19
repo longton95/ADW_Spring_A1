@@ -6,11 +6,11 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
-    @Document(collection = "users")
+@Document(collection = "advancedWeb")
 public class User {
 
     @Id
-    private String id;
+    public String id;
 
     @NotEmpty
     public String firstName;
@@ -19,7 +19,6 @@ public class User {
     public String lastName;
 
     @NotEmpty
-    @Indexed(unique = true)
     public String email;
 
     public String role;
@@ -33,13 +32,29 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName,String email,  Integer bitcoin, Integer etherium, Integer litecoin) {
+    public User (Integer bitcoin, Integer etherium, Integer litecoin) {
+        this.bitcoin = bitcoin;
+        this.etherium = etherium;
+        this.litecoin = litecoin;
+    }
+
+    public User(String id,String firstName, String lastName, String role, String email, Integer bitcoin, Integer etherium, Integer litecoin) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
         this.email = email;
         this.bitcoin = bitcoin;
         this.etherium = etherium;
         this.litecoin = litecoin;
+    }
+
+    public String getId () {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -57,6 +72,40 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public String getRole () {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getEmail() {
+            return email;
+        }
+
+    public void setEmail(String email) { this.email = email; }
+
+    public Integer getBitcoin() {
+        return bitcoin;
+    }
+
+    public void setBitcoin(Integer bitcoin) { this.bitcoin = bitcoin; }
+
+    public Integer getEtherium() {
+        return etherium;
+    }
+
+    public void setEtherium(Integer etherium) { this.etherium = etherium; }
+
+    public Integer getLitecoin() {
+        return litecoin;
+    }
+
+    public void setLitecoin(Integer litecoin) { this.litecoin = litecoin; }
+
+
 
     @Override
     public String toString() {
