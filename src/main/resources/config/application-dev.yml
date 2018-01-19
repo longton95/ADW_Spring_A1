@@ -13,10 +13,10 @@ spring:
 
 logging:
     level:
-        root: WARN
-        org.springframework: debug
-        org.springframework.web: debug
-        org.springframework.security: debug
+        root: DEBUG
+        org.springframework: DEBUG
+        org.springframework.web: DEBUG
+        org.springframework.security: DEBUG
 
 spring:
   thymeleaf:
