@@ -16,11 +16,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/login", "/css/**", "/webjars/**").permitAll()
-                    .antMatchers("/profile/**").access("hasRole('USER') or hasRole('ADMIN')")
-                    .antMatchers("/admin").hasRole("ADMIN")
-                    .antMatchers("/user").hasRole("ADMIN")
-                    .anyRequest().authenticated()
+//                    .antMatchers("/", "/login", "/css/**", "/webjars/**").permitAll()
+//                    .antMatchers("/profile/**").access("hasRole('USER') or hasRole('ADMIN')")
+//                    .antMatchers("/admin").hasRole("ADMIN")
+//                    .antMatchers("/user").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+
+                .anyRequest().permitAll()
 
                     .and()
 
@@ -32,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .logout()
                     .logoutUrl("/logout")
+                    .permitAll()
                     .logoutSuccessUrl("/index")
                     .invalidateHttpSession(true)
 
@@ -44,14 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .csrf();
     }
-    // @formatter:on
 
-    // @formatter:off
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
                 .withUser(User.withDefaultPasswordEncoder().username("user").password("password").roles("ADMIN"));
     }
-    // @formatter:on
 }
