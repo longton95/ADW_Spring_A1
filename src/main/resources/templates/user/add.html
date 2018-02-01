@@ -10,17 +10,18 @@
 <body>
 <div th:replace="mixins/header"></div>
 <div class="container">
-
-    <form>
+    <form action="#" th:action="@{/profile/add}" th:object="${newData}" method="post">
+        <input type="hidden" th:value="${'longton95@gmail.com'}" th:field="*{email}"  />
         Bitcoin:<br>
-        <input type="text" name="bitcoin">
+        <input type="text" th:field="*{bitcoin}">
         <br>
         Etherium:<br>
-        <input type="text" name="etherium">
+        <input type="text" th:field="*{etherium}">
         <br>
         Litecoin:<br>
-        <input type="text" name="litecoin">
-        <br><br>
+        <input type="text" th:field="*{litecoin}">
+        <br>
+        <br>
         <input type="submit" value="Submit">
     </form>
 </div>
