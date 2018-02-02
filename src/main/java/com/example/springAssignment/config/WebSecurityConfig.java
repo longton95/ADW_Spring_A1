@@ -16,13 +16,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                    .antMatchers("/", "/login", "/css/**", "/webjars/**").permitAll()
-//                    .antMatchers("/profile/**").access("hasRole('USER') or hasRole('ADMIN')")
-//                    .antMatchers("/admin").hasRole("ADMIN")
-//                    .antMatchers("/user").hasRole("ADMIN")
-//                .anyRequest().authenticated()
+                    .antMatchers("/", "/login", "/register", "/css/**", "/webjars/**").permitAll()
+                    .antMatchers("/profile/**").access("hasRole('USER') or hasRole('ADMIN')")
+                    .antMatchers("/admin").hasRole("ADMIN")
+                    .antMatchers("/user").hasRole("ADMIN")
+                .anyRequest().authenticated()
 
-                .anyRequest().permitAll()
+//                .anyRequest().permitAll()
 
                     .and()
 
@@ -31,11 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .failureUrl("/login-error")
 
                     .and()
-
                 .logout()
                     .logoutUrl("/logout")
                     .permitAll()
-                    .logoutSuccessUrl("/index")
+                    .logoutSuccessUrl("/")
                     .invalidateHttpSession(true)
 
                     .and()
