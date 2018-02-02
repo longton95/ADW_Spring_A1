@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 public interface UserRepository extends MongoRepository<User, String> {
