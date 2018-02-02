@@ -17,6 +17,7 @@ logging:
         org.springframework: DEBUG
         org.springframework.web: DEBUG
         org.springframework.security: DEBUG
+        org.springframework.data: DEBUG
 
 spring:
   thymeleaf:
