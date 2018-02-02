@@ -13,11 +13,11 @@ import javax.validation.Valid;
 @Controller
 public class Admin {
     @Autowired
-    private UserService userService;
+    public UserService userService;
 
     private static final String ADMIN = "admin/admin";
     private static final String EDIT_USER = "admin/editUser";
-    private static final String ADMIN_REDIRECT = "redirect:/admin";
+    private static final String ADMIN_REDIRECT = "redirect:/";
 
 
 
@@ -32,7 +32,24 @@ public class Admin {
 
     }
 
-    @GetMapping (value = "admin/delete/{id}")
+    @PostMapping(value = "/admin")
+    public String makeUser (Model model,
+                              @Valid @ModelAttribute("newData") User newData,
+                              BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors ()) {
+            model.addAttribute ("entries", this.userService.findAllEntries ());
+
+            return ADMIN;
+        }
+        else {
+            this.userService.save(newData);
+
+            return ADMIN_REDIRECT;
+        }
+    }
+
+    @GetMapping (value = "/admin/delete/{id}")
     public String deleteUser (@PathVariable String id) {
 
         this.userService.delete (id);
@@ -41,7 +58,7 @@ public class Admin {
     }
 
 
-    @GetMapping (value = "admin/edit/{id}")
+    @GetMapping (value = "/admin/edit/{id}")
     public String getEditUser (Model model, @PathVariable String id) {
 
         model.addAttribute ("entries", this.userService.findAllEntries ());
@@ -51,24 +68,25 @@ public class Admin {
     }
 
 
-    @PostMapping (value = "admin/edit/{id}")
+    @PostMapping (value = "/admin/edit/")
     public String postEditUser (Model model,
-                               @PathVariable String id,
                           @Valid @ModelAttribute ("userData") User newData,
-
                           BindingResult bindingResult) {
 
+
         if (bindingResult.hasErrors ()) {
+
             model.addAttribute ("entries", this.userService.findAllEntries ());
 
             return EDIT_USER;
         }
         else {
 
-            User current = this.userService.findUserById (id);
+
+            User current = this.userService.findUserById (newData.getId());
 
 
-            current.setId (id);
+            current.setId (newData.getId());
             current.setFirstName (newData.getFirstName ());
             current.setLastName (newData.getLastName ());
             current.setRole (newData.getRole ());
