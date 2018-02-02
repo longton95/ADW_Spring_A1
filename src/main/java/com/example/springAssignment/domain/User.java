@@ -12,16 +12,15 @@ public class User {
     @Id
     public String id;
 
-    @NotEmpty
     public String firstName;
 
-    @NotEmpty
     public String lastName;
 
-    @NotEmpty
     public String email;
 
     public String role;
+
+    public String password;
 
     public Integer bitcoin;
 
@@ -32,14 +31,13 @@ public class User {
     public User() {
     }
 
-    public User (Integer bitcoin, Integer etherium, Integer litecoin) {
+    public User(Integer bitcoin, Integer etherium, Integer litecoin) {
         this.bitcoin = bitcoin;
         this.etherium = etherium;
         this.litecoin = litecoin;
     }
 
-    public User(String id,String firstName, String lastName, String role, String email, Integer bitcoin, Integer etherium, Integer litecoin) {
-        this.id = id;
+    public User(String firstName, String lastName, String role, String email, Integer bitcoin, Integer etherium, Integer litecoin) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.role = role;
@@ -47,6 +45,13 @@ public class User {
         this.bitcoin = bitcoin;
         this.etherium = etherium;
         this.litecoin = litecoin;
+    }
+
+    public User(String firstName, String lastName,String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public String getId () {
@@ -85,7 +90,13 @@ public class User {
             return email;
         }
 
-    public void setEmail(String email) { this.email = email; }
+    public void setEmail(String email) { this.password = password; }
+
+    public String getPassword() {
+        return email;
+    }
+
+    public void setPassword(String password) { this.password = password; }
 
     public Integer getBitcoin() {
         return bitcoin;
@@ -110,8 +121,8 @@ public class User {
     @Override
     public String toString() {
         return String.format(
-                "User[id=%s, firstName='%s', lastName='%s', email='%s', bitcoin='%s', etherium='%s', litecoin='%s']",
-                id, firstName, lastName, email, bitcoin, etherium, litecoin);
+                "User[id=%s, firstName='%s', lastName='%s', role='%s', email='%s', bitcoin='%s', etherium='%s', litecoin='%s']",
+                id, firstName, lastName, role, email, bitcoin, etherium, litecoin);
     }
 
 }
