@@ -14,16 +14,36 @@
     <div th:if="${registerError}" class="alert alert-danger">
         <strong>Are You Forgetting Something</strong>
     </div>
-    <form th:action="@{/login}" method="post">
-        <label for="email">Email</label>:
-        <input type="text" id="email" name="email" autofocus="autofocus" /> <br />
-        <label for="firstName">First name</label>:
-        <input type="text" id="firstName" name="firstName"/> <br />
-        <label for="lastName">Last name</label>:
-        <input type="text" id="lastName" name="lastName"/> <br />
-        <label for="password">Password</label>:
-        <input type="password" id="password" name="password" /> <br />
-        <input type="submit" value="Log in" />
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <div>
+            <label>First Name</label>
+            <input th:field="*{firstName}"/>
+            <p th:each="error: ${#fields.errors('firstName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div>
+            <label>Last Name</label>
+            <input th:field="*{lastName}"/>
+            <p th:each="error : ${#fields.errors('lastName')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" th:field="*{email}"/>
+            <p th:each="error : ${#fields.errors('email')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" th:field="*{password}"/>
+            <p th:each="error : ${#fields.errors('password')}"
+               th:text="${error}">Validation error</p>
+        </div>
+        <!--<div>-->
+            <!--<label th:text="#{label.user.confirmPass}">confirm</label>-->
+            <!--<input type="password" th:field="*{matchingPassword}"/>-->
+        <!--</div>-->
+        <button type="submit" value="Submit">submit</button>
     </form>
 </div>
 <div th:replace="mixins/footer"></div>
