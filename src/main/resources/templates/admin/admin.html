@@ -11,7 +11,7 @@
 <div th:replace="mixins/header"></div>
 <div class="container">
     <div th:if="${entries}">
-        <p>Coins</p>
+        <h2>Users</h2>
         <table class="table">
             <thead>
             <tr>
@@ -32,6 +32,7 @@
                 <td th:text="${entry.lastName}"></td>
                 <td th:text="${entry.role}"></td>
                 <td th:text="${entry.email}"></td>
+                <!--<td th:text="${entry.password}"></td>-->
                 <td th:text="${entry.bitcoin}"></td>
                 <td th:text="${entry.etherium}"></td>
                 <td th:text="${entry.litecoin}"></td>
@@ -42,8 +43,8 @@
             </tbody>
         </table>
     </div>
-
-    <form action="#" th:action="@{/}" th:object="${newData}" method="post">
+    <h2>Create User</h2>
+    <form action="#" th:action="@{/admin}" th:object="${newData}" method="post">
         First Name:<br>
         <input type="text" th:field="*{firstName}">
         <br>
@@ -56,6 +57,9 @@
         Email:<br>
         <input type="text" th:field="*{email}">
         <br>
+        <!--Password:<br>-->
+        <!--<input type="text" th:field="*{password}">-->
+        <!--<br>-->
         Bitcoin:<br>
         <input type="text" th:field="*{bitcoin}">
         <br>
