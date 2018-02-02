@@ -24,9 +24,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li th:fragment="login" class="logout" sec:authorize="!isAuthenticated()">
+                <li th:fragment="login" class="login" sec:authorize="!isAuthenticated()">
                     <a href="/login" th:href="@{/login}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+                    </a>
+                </li>
+                <li th:fragment="register" class="register" sec:authorize="!isAuthenticated()">
+                    <a href="/register" th:href="@{/register}">
+                        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;Sign up
                     </a>
                 </li>
                 <li th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
